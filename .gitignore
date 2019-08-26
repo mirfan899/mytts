@@ -1,0 +1,4 @@
+.idea
+.django
+.DS_Store
+*.pyc
