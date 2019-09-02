@@ -128,3 +128,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # MEDIA_URL = "/media/"
 CONVERT_TYPE_VALUE = 0
 CHANNEL_TYPE_VALUE = 0
+DATA_URL = "/data/"
+DATA_ROOT = os.path.join(BASE_DIR, "data")

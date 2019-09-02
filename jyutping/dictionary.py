@@ -1,17 +1,15 @@
 """
-eSpeak Dictionary
+Dictionary
 """
 from __future__ import absolute_import
 import io
-import os
+from mytts.settings import DATA_ROOT
 
 CHS_DICT = {}
-path = os.path.dirname(os.path.abspath(__file__))
 
 
 def load_dictionary():
-
-    dictionary_file = path + "/zhy_jyut_cantonese.tsv"
+    dictionary_file = DATA_ROOT + "/zhy_jyut_cantonese.tsv"
     # logger.log('Load dictionary %s.' % dictionary_file)
     with io.open(dictionary_file, mode='r', encoding='utf-8') as f:
         for line in f:

@@ -3,7 +3,7 @@
 Convert Chinese characters to Jyutping.
 """
 from __future__ import absolute_import
-import dictionary
+from jyutping import dictionary
 
 
 def get_jyutping_list(characters):

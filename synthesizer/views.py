@@ -2,8 +2,10 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+from synthesizer.models import Transcript
 from .forms import TranscriptForm
 from django.views import View
+from jyutping.jyutping import get_jyutping
 
 
 # Create your views here.
@@ -23,7 +25,10 @@ class TranscriptView(View):
         if self.request.method == "POST" and self.request.is_ajax():
             form = self.form(self.request.POST)
             if form.is_valid():
-                form.save()
+                transcript = form.cleaned_data['transcript']
+                jyutping = " ".join(get_jyutping(transcript))
+                model = Transcript(transcript=transcript, jyutping=jyutping)
+                model.save()
             return JsonResponse({"success": True}, status=200)
         return JsonResponse({"success": False}, status=400)
 
