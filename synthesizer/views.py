@@ -22,7 +22,8 @@ class TranscriptView(View):
     def post(self, *args, **kwargs):
         if self.request.method == "POST" and self.request.is_ajax():
             form = self.form(self.request.POST)
-            # form.save()
+            if form.is_valid():
+                form.save()
             return JsonResponse({"success": True}, status=200)
         return JsonResponse({"success": False}, status=400)
 

@@ -1,5 +1,11 @@
 from django import forms
+from django.forms import ModelForm
+
+from synthesizer.models import Transcript
 
 
-class TranscriptForm(forms.Form):
-    transcript = forms.CharField(widget=forms.Textarea)
+class TranscriptForm(ModelForm):
+
+    class Meta:
+        model = Transcript
+        fields = ['transcript']
