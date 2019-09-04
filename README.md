@@ -3,3 +3,10 @@ Django app for Cantonese synthesizer
 ### Compile Ossian
 Run this in Ossian directory
 ./scripts/setup_tools.sh mirfan899 Tqveb=Be
+
+## Some services should to be enabled
+```shell script
+sudo ufw enable
+sudo ufw allow 8000
+sudo ufw status
+```
