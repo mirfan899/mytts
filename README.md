@@ -4,9 +4,5 @@ Django app for Cantonese synthesizer
 Run this in Ossian directory
 ./scripts/setup_tools.sh mirfan899 Tqveb=Be
 
-## Some services should to be enabled
-```shell script
-sudo ufw enable
-sudo ufw allow 8000
-sudo ufw status
-```
+### IP of Allowed Hosts.
+After cloning the repository add IP address in settings in allowed hosts.
