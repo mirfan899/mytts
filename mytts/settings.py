@@ -25,7 +25,7 @@ SECRET_KEY = '=_gmirlinds5wvnd1-a$x8+yzdvr(3_az84d2x0olxatle$daf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mytts-241901.appspot.com']
 
 
 # Application definition
