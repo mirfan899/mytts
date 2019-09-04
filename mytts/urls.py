@@ -13,9 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from synthesizer.views import IndexView, get_transcript, TranscriptView
+
+from mytts import settings
+from synthesizer.views import TranscriptView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +28,5 @@ urlpatterns = [
     # path("transcript/", TranscriptView.as_view(), name="transcript"),
     # path('', index, name="index"),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
