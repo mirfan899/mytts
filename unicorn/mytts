@@ -1,0 +1,13 @@
+server {
+    listen 8000;
+    server_name 1.2.3.4;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/virtuoso_irfan/mytts;
+    }
+     location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+}
