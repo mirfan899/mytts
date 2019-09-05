@@ -23,7 +23,6 @@
                 data: serializedData,
                 success: function (response) {
                     //reset the form after successful submit
-                    alert(response.path);
                     $("#player").attr("src", response.path);
                     $("#transcriptForm")[0].reset();
 
