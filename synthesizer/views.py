@@ -6,6 +6,7 @@ from synthesizer.models import Transcript
 from .forms import TranscriptForm
 from django.views import View
 from jyutping.jyutping import get_jyutping
+import subprocess
 
 
 # Create your views here.
@@ -22,6 +23,7 @@ class TranscriptView(View):
         return render(self.request, self.template_name, {"form": form})
 
     def post(self, *args, **kwargs):
+        pk = "/media/wav/cn.wav"
         if self.request.method == "POST" and self.request.is_ajax():
             form = self.form(self.request.POST)
             if form.is_valid():
@@ -29,7 +31,9 @@ class TranscriptView(View):
                 jyutping = " ".join(get_jyutping(transcript))
                 model = Transcript(transcript=transcript, jyutping=jyutping)
                 model.save()
-            return JsonResponse({"success": True}, status=200)
+                pk = model.pk
+                subprocess.call(['./synthesize.sh', str(pk), jyutping])
+            return JsonResponse({"success": True, "path": str("/media/wav/{}".format(pk))}, status=200)
         return JsonResponse({"success": False}, status=400)
 
 
