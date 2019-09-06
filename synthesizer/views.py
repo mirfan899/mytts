@@ -32,7 +32,7 @@ class TranscriptView(View):
                 model = Transcript(transcript=transcript, jyutping=jyutping)
                 model.save()
                 pk = model.pk
-                subprocess.call(['./ossian.sh', str(pk), jyutping])
+                subprocess.call(['sudo ./ossian.sh', str(pk), jyutping])
             return JsonResponse({"success": True, "path": str("/media/wav/{}".format(pk))}, status=200)
         return JsonResponse({"success": False}, status=400)
 
