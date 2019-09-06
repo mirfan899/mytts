@@ -1,3 +1,6 @@
+### Requirment
+Python 3.7.*
+
 ### mytts 
 Django app for Cantonese synthesizer
 
