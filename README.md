@@ -20,8 +20,8 @@ sudo apt-get install nginx
 ### Gunicorn
 copy `gunicorn.socket` to `/etc/systemd/system/`
 ```shell script
-cp mytts/unicorn/gunicorn.socket /etc/systemd/system/
-cp mytts/unicorn/gunicorn.service /etc/systemd/system/
+cp ./unicorn/gunicorn.socket /etc/systemd/system/
+cp ./unicorn/gunicorn.service /etc/systemd/system/
 ```
 
 Now enable the service
