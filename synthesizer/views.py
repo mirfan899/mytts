@@ -7,6 +7,7 @@ from .forms import TranscriptForm
 from django.views import View
 from jyutping.jyutping import get_jyutping
 import subprocess
+from subprocess import Popen,PIPE
 
 
 # Create your views here.
@@ -32,7 +33,10 @@ class TranscriptView(View):
                 model = Transcript(transcript=transcript, jyutping=jyutping)
                 model.save()
                 pk = model.pk
-                subprocess.call(['sudo ./ossian.sh', str(pk), jyutping])
+                subprocess.call(['./ossian.sh', str(pk), jyutping], shell=True)
+                process = subprocess.Popen(['sudo ./ossian.sh', str(pk), jyutping], stdin=PIPE, stdout=PIPE,
+                                           stderr=PIPE, shell=False)
+
             return JsonResponse({"success": True, "path": str("/media/wav/{}".format(pk))}, status=200)
         return JsonResponse({"success": False}, status=400)
 
