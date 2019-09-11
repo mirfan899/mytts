@@ -50,3 +50,6 @@ sudo systemctl restart gunicorn.socket gunicorn.service
 ```shell script
 sudo lsof -t -i tcp:8000 | xargs kill -9
 ```
+
+### AppEngine
+`main.py` is for AppEngine
