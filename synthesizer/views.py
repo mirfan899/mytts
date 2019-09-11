@@ -34,8 +34,8 @@ class TranscriptView(View):
                 model.save()
                 pk = model.pk
                 subprocess.call(['./ossian.sh', str(pk), jyutping], shell=True)
-                process = subprocess.Popen(['sudo ./ossian.sh', str(pk), jyutping], stdin=PIPE, stdout=PIPE,
-                                           stderr=PIPE, shell=False)
+                # process = subprocess.Popen(['sudo', './ossian.sh', str(pk), jyutping], stdin=PIPE, stdout=PIPE,
+                #                            stderr=PIPE, shell=False)
 
             return JsonResponse({"success": True, "path": str("/media/wav/{}".format(pk))}, status=200)
         return JsonResponse({"success": False}, status=400)
@@ -51,7 +51,6 @@ def get_transcript(request):
             # process the data in form.cleaned_data as required
             # redirect to a index URL:
             data = form.cleaned_data['transcript']
-            print(data)
             return HttpResponseRedirect('/')
 
     # if a GET (or any other method) we'll create a blank form

@@ -9,7 +9,7 @@ Group=www-data
 WorkingDirectory=/home/virtuoso_irfan/mytts
 ExecStart=/home/virtuoso_irfan/mytts/.mytts/bin/gunicorn \
           --access-logfile - \
-          --workers 3 \
+          --workers 2 \
           --bind unix:/run/gunicorn.sock \
           mytts.wsgi:application
 
