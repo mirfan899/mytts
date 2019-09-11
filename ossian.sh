@@ -10,7 +10,8 @@ cd $OSSIAN
 source $OSSIAN/.mytts/bin/activate
 
 MYTTS_MEDIA=/home/virtuoso_irfan/mytts/media
-
+#check python version
+python --version
 # write file
 touch $MYTTS_MEDIA/txt/${FILE}.txt
 echo $TRANSCRIPT > $MYTTS_MEDIA/txt/${FILE}.txt

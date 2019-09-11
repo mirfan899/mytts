@@ -36,7 +36,8 @@ class TranscriptView(View):
                 # subprocess.call(['./ossian.sh', str(pk), jyutping], shell=True)
                 process = subprocess.Popen(['sudo', './ossian.sh', str(pk), jyutping], stdin=PIPE, stdout=PIPE,
                                            stderr=PIPE, shell=False)
-                output = process.communicate()[0]
+                # output = process.communicate()[0]
+                output = process.wait()
                 print(output)
 
             return JsonResponse({"success": True, "path": str("/media/wav/{}".format(pk))}, status=200)
