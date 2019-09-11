@@ -16,5 +16,4 @@ python --version
 touch $MYTTS_MEDIA/txt/${FILE}.txt
 echo $TRANSCRIPT > $MYTTS_MEDIA/txt/${FILE}.txt
 
-python $OSSIAN/scripts/speak.py -l $OSSIAN_LANG -s $DATA_NAME -o $MYTTS_MEDIA/wav/${FILE}.wav $RECIPE
-$MYTTS_MEDIA/txt/${FILE}.txt
+python $OSSIAN/scripts/speak.py -l $OSSIAN_LANG -s $DATA_NAME -o $MYTTS_MEDIA/wav/${FILE}.wav $RECIPE $MYTTS_MEDIA/txt/${FILE}.txt
