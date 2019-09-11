@@ -1,4 +1,4 @@
-### Requirment
+### Requirements
 Python 3.7.*
 
 ### mytts 
@@ -33,7 +33,7 @@ sudo systemctl status gunicorn.socket
 
 ### NGINX configuration
 copy mytts to `/etc/nginx/sites-available/`
-test it 
+test it
 enable site
 ```shell script
 sudo ln -s /etc/nginx/sites-available/mytts /etc/nginx/sites-enabled
