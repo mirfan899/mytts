@@ -32,10 +32,12 @@ class TranscriptView(View):
                 jyutping = " ".join(get_jyutping(transcript))
                 model = Transcript(transcript=transcript, jyutping=jyutping)
                 model.save()
-                pk = model.pk
+                pk = str(model.id) + ".wav"
                 # subprocess.call(['./ossian.sh', str(pk), jyutping], shell=True)
                 process = subprocess.Popen(['sudo', './ossian.sh', str(pk), jyutping], stdin=PIPE, stdout=PIPE,
                                            stderr=PIPE, shell=False)
+                output = process.communicate()[0]
+                print(output)
 
             return JsonResponse({"success": True, "path": str("/media/wav/{}".format(pk))}, status=200)
         return JsonResponse({"success": False}, status=400)
