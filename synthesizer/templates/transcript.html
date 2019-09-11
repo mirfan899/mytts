@@ -23,9 +23,10 @@
                 data: serializedData,
                 success: function (response) {
                     //reset the form after successful submit
-                    $("#player").attr("src", response.path);
                     $("#transcriptForm")[0].reset();
-
+                    $("#player audio source").attr("src", response.path);
+                    $("#player audio")[0].load();
+                    console.log(response.path);
                 },
                 error: function (response) {
                     console.log(response)
@@ -48,10 +49,12 @@
                 </form>
                 <div class="col-sm-6">
                     <p>play audio</p>
-                    <audio controls>
-                        <source src="/media/wav/cn.wav" type="audio/wav" id="player">
-                        Your browser does not support the audio element.
-                    </audio>
+                    <div id="player">
+                        <audio controls>
+                            <source src="/media/wav/cn.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
                 </div>
             </div>
         </div>
