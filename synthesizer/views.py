@@ -1,3 +1,4 @@
+import re
 from subprocess import Popen, PIPE
 
 from django.http import HttpResponseRedirect, JsonResponse
@@ -29,7 +30,9 @@ class TranscriptView(View):
             form = self.form(self.request.POST)
             if form.is_valid():
                 transcript = form.cleaned_data['transcript']
+                transcript = re.sub("[，。, . ]+", "", transcript)
                 jyutping = " ".join(get_jyutping(transcript))
+
                 model = Transcript(transcript=transcript, jyutping=jyutping)
                 model.save()
                 pk = str(model.id)
