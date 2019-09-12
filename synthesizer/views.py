@@ -38,7 +38,6 @@ class TranscriptView(View):
                                            stderr=PIPE, shell=False)
                 # output = process.communicate()[0]
                 output = process.wait()
-                print(output)
                 pk = pk + ".wav"
             return JsonResponse({"success": True, "path": str("/media/wav/{}".format(pk))}, status=200)
         return JsonResponse({"success": False}, status=400)
