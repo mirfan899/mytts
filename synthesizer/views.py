@@ -1,13 +1,13 @@
+from subprocess import Popen, PIPE
+
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
+from django.views import View
 from django.views.generic import TemplateView
 
+from jyutping.jyutping import get_jyutping
 from synthesizer.models import Transcript
 from .forms import TranscriptForm
-from django.views import View
-from jyutping.jyutping import get_jyutping
-import subprocess
-from subprocess import Popen,PIPE
 
 
 # Create your views here.
@@ -34,8 +34,8 @@ class TranscriptView(View):
                 model.save()
                 pk = str(model.id)
                 # subprocess.call(['./ossian.sh', str(pk), jyutping], shell=True)
-                process = subprocess.Popen(['sudo', './ossian.sh', pk, jyutping], stdin=PIPE, stdout=PIPE,
-                                           stderr=PIPE, shell=False)
+                process = Popen(['sudo', './ossian.sh', pk, jyutping], stdin=PIPE, stdout=PIPE,
+                                stderr=PIPE, shell=False)
                 # output = process.communicate()[0]
                 output = process.wait()
                 pk = pk + ".wav"
