@@ -8,4 +8,7 @@ class TranscriptForm(ModelForm):
 
     class Meta:
         model = Transcript
+        widgets = {
+            'transcript': forms.Textarea(attrs={'class': "form-control mb-4", "rows": "4"}),
+        }
         fields = ['transcript']

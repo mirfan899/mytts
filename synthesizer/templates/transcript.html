@@ -39,25 +39,17 @@
 
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="form-group">
-                <form method="POST" id="transcriptForm" action=".">
-                    {% csrf_token %}
-                    {{ form }}
-                    <input type="submit" value="Submit" class="btn btn-success">
-                </form>
-                <div class="col-sm-6">
-                    <p>play audio</p>
-                    <div id="player">
-                        <audio controls>
-                            <source src="/media/wav/cn.wav" type="audio/wav">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <form method="POST" id="transcriptForm" action="." class="border border-light p-5">
+        <p class="h4 mb-4 text-center">Cantonese Synthesizer</p>
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-info btn-block my-4" type="submit">Synthesize</button>
+    </form>
+    <div id="player" class="h4 mb-4 text-center">
+        <audio controls>
+            <source src="/media/wav/cn.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
     </div>
 </div>
 </body>
